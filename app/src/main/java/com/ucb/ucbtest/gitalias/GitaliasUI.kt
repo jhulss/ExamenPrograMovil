@@ -20,18 +20,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.ucb.ucbtest.R
+import dagger.hilt.android.AndroidEntryPoint
 
 @Composable
-fun GitaliasUI() {
+fun GitaliasUI(viewModel : GitaliasViewModel = viewModel() ) {
     var alias by remember { mutableStateOf("") }
 
-    val viewModel : GitaliasViewModel = viewModel()
     val gitaliasState by viewModel.flow.collectAsState()
 
     Box(

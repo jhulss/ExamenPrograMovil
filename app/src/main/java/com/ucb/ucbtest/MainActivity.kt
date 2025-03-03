@@ -10,7 +10,9 @@ import com.ucb.ucbtest.gitalias.GitaliasUI
 import com.ucb.ucbtest.home.HomeUI
 import com.ucb.ucbtest.login.LoginUI
 import com.ucb.ucbtest.ui.theme.UcbtestTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_Ucbtest)

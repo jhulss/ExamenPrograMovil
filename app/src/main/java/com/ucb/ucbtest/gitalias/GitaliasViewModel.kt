@@ -4,12 +4,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ucb.domain.Gitalias
 import com.ucb.usecases.FindGitAlias
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class GitaliasViewModel: ViewModel() {
-    val findGitAlias = FindGitAlias()
+@HiltViewModel
+class GitaliasViewModel @Inject constructor(
+    val findGitAlias : FindGitAlias
+): ViewModel() {
 
     sealed class GitaliasState {
         object Init: GitaliasState()
