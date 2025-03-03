@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ucbtest</string>
+    <string name="login_title">Signin</string>
+    <string name="home_welcome_text">Welcome back %s!</string>
+    <string name="gitalias_input">Ingrese la cuenta de github</string>
+    <string name="gitalias_btn_find">Buscar</string>
+</resources>
