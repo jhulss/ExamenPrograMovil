@@ -23,3 +23,5 @@ rootProject.name = "ucbtest"
 include(":app")
 include(":usecases")
 include(":domain")
+include(":data")
+include(":framework")
