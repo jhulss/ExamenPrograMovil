@@ -1,5 +1,9 @@
 package com.ucb.ucbtest.di
 
+import com.ucb.data.GithubRepository
+import com.ucb.data.git.IGitRemoteDataSource
+import com.ucb.framework.github.GithubRemoteDataSource
+import com.ucb.framework.service.RetrofitBuilder
 import com.ucb.usecases.FindGitAlias
 import dagger.Module
 import dagger.Provides
@@ -13,7 +17,26 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideGitUseCases(): FindGitAlias {
-        return FindGitAlias()
+    fun providerRetrofitBuilder() : RetrofitBuilder {
+        return RetrofitBuilder
+    }
+
+
+    @Provides
+    @Singleton
+    fun gitRemoteDataSource(retrofiService: RetrofitBuilder): IGitRemoteDataSource {
+        return GithubRemoteDataSource(retrofiService)
+    }
+
+    @Provides
+    @Singleton
+    fun gitRepository(remoteDataSource: IGitRemoteDataSource): GithubRepository {
+        return GithubRepository(remoteDataSource)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGitUseCases(githubRepository: GithubRepository): FindGitAlias {
+        return FindGitAlias(githubRepository)
     }
 }
