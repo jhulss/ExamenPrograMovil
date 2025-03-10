@@ -56,6 +56,10 @@ moshi-ksp = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", versi
 converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref= "retrofit"}
 retrofit-coroutines = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlin-coroutines-adapter", version.ref= "retrofitCoroutines"}
 
+leakcanary-android = "com.squareup.leakcanary:leakcanary-android:2.14"
+chucker = "com.github.chuckerteam.chucker:library:4.1.0"
+chucker-no-op = "com.github.chuckerteam.chucker:library-no-op:4.1.0"
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

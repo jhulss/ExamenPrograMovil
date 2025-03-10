@@ -56,6 +56,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.runtime.livedata)
+    debugImplementation(libs.leakcanary.android)
 
     implementation(libs.kotlinx.coroutines.core) // Para Flow
     implementation(libs.coil)

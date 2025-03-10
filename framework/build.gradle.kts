@@ -48,6 +48,9 @@ dependencies {
     implementation(libs.converter.moshi)
     ksp(libs.moshi.ksp)
 
+    debugImplementation(libs.chucker)
+    releaseImplementation(libs.chucker.no.op)
+
     implementation(project(":data"))
     implementation(project(":domain"))
 

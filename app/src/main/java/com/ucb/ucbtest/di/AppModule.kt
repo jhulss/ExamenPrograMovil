@@ -1,5 +1,6 @@
 package com.ucb.ucbtest.di
 
+import android.content.Context
 import com.ucb.data.GithubRepository
 import com.ucb.data.git.IGitRemoteDataSource
 import com.ucb.framework.github.GithubRemoteDataSource
@@ -8,6 +9,7 @@ import com.ucb.usecases.FindGitAlias
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -17,8 +19,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providerRetrofitBuilder() : RetrofitBuilder {
-        return RetrofitBuilder
+    fun providerRetrofitBuilder(@ApplicationContext context: Context) : RetrofitBuilder {
+        return RetrofitBuilder(context)
     }
 
 
