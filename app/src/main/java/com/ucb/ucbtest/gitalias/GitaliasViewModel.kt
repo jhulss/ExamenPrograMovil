@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GitaliasViewModel @Inject constructor(
-    val findGitAlias : FindGitAlias
+    private val findGitAlias : FindGitAlias
 ): ViewModel() {
 
     sealed class GitaliasState {

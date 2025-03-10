@@ -12,7 +12,7 @@ class LoginViewModel: ViewModel() {
     sealed class LoginState {
         object Init: LoginState()
         object Loading: LoginState()
-        class Successful(): LoginState()
+        class Successful: LoginState()
         class Error(val message: String): LoginState()
     }
 
