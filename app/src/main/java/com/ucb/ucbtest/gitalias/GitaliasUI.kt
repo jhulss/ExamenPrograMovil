@@ -71,7 +71,7 @@ fun GitaliasUI(viewModel: GitaliasViewModel = viewModel()) {
                     )
                 }
                 is GitaliasViewModel.GitaliasState.Error -> {
-                    Text("UserID not found"+ state.message)
+                    Text(state.message)
                 }
             }
         }
