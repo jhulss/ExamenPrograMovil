@@ -48,6 +48,16 @@ dependencies {
     implementation(libs.converter.moshi)
     ksp(libs.moshi.ksp)
 
+    //room
+    implementation(libs.bundles.room)
+    ksp(libs.room.compiler)
+    annotationProcessor(libs.room.compiler)
+    testImplementation(libs.room.testing)
+
+
+    debugImplementation(libs.chucker)
+    releaseImplementation(libs.chucker.no.op)
+
     implementation(project(":data"))
     implementation(project(":domain"))
 
