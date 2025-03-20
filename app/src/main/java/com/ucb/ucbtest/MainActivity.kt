@@ -9,6 +9,7 @@ import com.ucb.ucbtest.counter.CounterUIV2
 import com.ucb.ucbtest.gitalias.GitaliasUI
 import com.ucb.ucbtest.home.HomeUI
 import com.ucb.ucbtest.login.LoginUI
+import com.ucb.ucbtest.takephoto.TakePhotoUI
 import com.ucb.ucbtest.ui.theme.UcbtestTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            GitaliasUI()
+            TakePhotoUI()
         }
     }
 }
