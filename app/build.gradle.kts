@@ -57,7 +57,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.runtime.livedata)
     debugImplementation(libs.leakcanary.android)
-
+    implementation(libs.navigation)
+    implementation(libs.hilt.navigation)
     implementation(libs.kotlinx.coroutines.core) // Para Flow
     implementation(libs.coil)
     implementation(libs.hilt)
