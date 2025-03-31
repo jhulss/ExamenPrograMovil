@@ -7,4 +7,5 @@
     <string name="gitalias_btn_find">Find</string>
     <string name="internet_conection_error">You have no internet connection</string>
     <string name="btn_take_photo">Tomar foto</string>
+    <string name="movie_list">Movie List</string>
 </resources>

@@ -6,4 +6,5 @@
     <string name="gitalias_btn_find">Buscar</string>
     <string name="internet_conection_error">No tiene conexión a Internet</string>
     <string name="btn_take_photo">Tomar foto</string>
+    <string name="movie_list">Movie List</string>
 </resources>

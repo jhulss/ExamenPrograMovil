@@ -8,6 +8,7 @@ import com.ucb.framework.github.GithubLocalDataSource
 import com.ucb.framework.github.GithubRemoteDataSource
 import com.ucb.framework.service.RetrofitBuilder
 import com.ucb.usecases.FindGitAlias
+import com.ucb.usecases.GetPopularMovies
 import com.ucb.usecases.SaveGitalias
 import dagger.Module
 import dagger.Provides
@@ -55,5 +56,11 @@ object AppModule {
     @Singleton
     fun provideGitUseCases(githubRepository: GithubRepository): FindGitAlias {
         return FindGitAlias(githubRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetPopularMovies(): GetPopularMovies {
+        return GetPopularMovies()
     }
 }

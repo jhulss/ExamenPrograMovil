@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kapt)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlinSerialization)
 }
 android {
     namespace = "com.ucb.ucbtest"
@@ -65,6 +66,10 @@ dependencies {
     kapt(libs.hilt.compiler)
     androidTestImplementation(libs.hilt.test)
     kaptAndroidTest(libs.hilt.compiler)
+
+    //serialization
+    implementation(libs.kotlinx.serialization.json)
+
 
     implementation(project(":usecases"))
     implementation(project(":domain"))
