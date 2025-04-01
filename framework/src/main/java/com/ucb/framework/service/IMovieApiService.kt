@@ -8,7 +8,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface IMovieApiService {
-    @GET("/3/discover/movie?sort_by=popularity.desc&")
+    @GET("/3/discover/movie?sort_by=popularity.desc")
     suspend fun fetchPopularMovies(@Query("api_key") token: String): Response<MovieResponseDto>
 
 }
