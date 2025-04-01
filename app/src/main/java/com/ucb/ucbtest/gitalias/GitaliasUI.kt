@@ -21,12 +21,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.ucb.ucbtest.R
 
 @Composable
-fun GitaliasUI(viewModel: GitaliasViewModel = viewModel()) {
+fun GitaliasUI(viewModel: GitaliasViewModel = hiltViewModel()) {
     var alias by remember { mutableStateOf("") }
 
     val gitaliasState by viewModel.flow.collectAsState()

@@ -2,12 +2,17 @@ package com.ucb.ucbtest.di
 
 import android.content.Context
 import com.ucb.data.GithubRepository
+import com.ucb.data.MovieRepository
 import com.ucb.data.git.IGitRemoteDataSource
 import com.ucb.data.git.ILocalDataSource
+import com.ucb.data.movie.IMovieRemoteDataSource
 import com.ucb.framework.github.GithubLocalDataSource
 import com.ucb.framework.github.GithubRemoteDataSource
+import com.ucb.framework.movie.MovieRemoteDataSource
 import com.ucb.framework.service.RetrofitBuilder
+import com.ucb.ucbtest.R
 import com.ucb.usecases.FindGitAlias
+import com.ucb.usecases.GetPopularMovies
 import com.ucb.usecases.SaveGitalias
 import dagger.Module
 import dagger.Provides
@@ -55,5 +60,24 @@ object AppModule {
     @Singleton
     fun provideGitUseCases(githubRepository: GithubRepository): FindGitAlias {
         return FindGitAlias(githubRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetPopularMovies(movieRepository: MovieRepository, @ApplicationContext context: Context): GetPopularMovies {
+        val token = context.getString(R.string.token)
+        return GetPopularMovies(movieRepository, token)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieRepository(dataSource: IMovieRemoteDataSource) : MovieRepository {
+        return MovieRepository(dataSource)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieRemoteDataSource(retrofit: RetrofitBuilder ): IMovieRemoteDataSource {
+        return MovieRemoteDataSource(retrofit)
     }
 }

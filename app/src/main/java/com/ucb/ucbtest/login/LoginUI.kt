@@ -28,28 +28,30 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ucb.ucbtest.R
 
 @Composable
-fun LoginUI() {
+fun LoginUI( onSuccess : () ->  Unit) {
 
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var context = LocalContext.current
-    val viewModel: LoginViewModel = viewModel()
+    val viewModel: LoginViewModel = hiltViewModel()
 
     val loginState by viewModel.loginState.collectAsState(LoginViewModel.LoginState.Init)
 
     when ( loginState) {
         is LoginViewModel.LoginState.Init -> {
-            Toast.makeText(context, "Init", Toast.LENGTH_LONG).show()
+            //Toast.makeText(context, "Init", Toast.LENGTH_LONG).show()
         }
         is LoginViewModel.LoginState.Error -> {
             Toast.makeText(context, (loginState as LoginViewModel.LoginState.Error).message, Toast.LENGTH_LONG).show()
         }
         is LoginViewModel.LoginState.Successful -> {
-            Toast.makeText(context, "Successful", Toast.LENGTH_LONG).show()
+            //Toast.makeText(context, "Successful", Toast.LENGTH_LONG).show()
+            onSuccess()
         }
         is LoginViewModel.LoginState.Loading -> {
             Toast.makeText(context, "Loading....", Toast.LENGTH_LONG).show()
