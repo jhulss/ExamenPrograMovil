@@ -1,5 +1,6 @@
 package com.ucb.ucbtest.counter
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.Observer
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -32,7 +34,7 @@ fun CounterUI() {
         lifecycleOwner,
         Observer(::updateUI)
     )
-
+    val context = LocalContext.current
     Scaffold {
         innerPadding ->  Column(
             modifier = Modifier.padding(innerPadding).fillMaxSize(),
@@ -42,7 +44,7 @@ fun CounterUI() {
         Text(cadena)
         Button(
             onClick = {
-                viewModel.increment()
+                viewModel.increment( context =  context)
             }
         ) {
             Text("Increment")
@@ -57,7 +59,7 @@ fun CounterUI() {
 fun CounterUIV2() {
     val viewModel: CounterViewModel = viewModel()
     val cadena by viewModel.cadena.observeAsState("0")
-
+    val context = LocalContext.current
     Scaffold { innerPadding ->
         Column(
             modifier = Modifier.padding(innerPadding).fillMaxSize(),
@@ -68,7 +70,7 @@ fun CounterUIV2() {
             Text(cadena)
             Button(
                 onClick = {
-                    viewModel.increment()
+                    viewModel.increment(context = context)
                 }
             ) {
                 Text("Add")
