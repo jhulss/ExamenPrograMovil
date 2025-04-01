@@ -10,7 +10,7 @@ class RetrofitBuilder(
     val context: Context
 ) {
 
-    private fun getRetrofit(): Retrofit {
+    private fun getRetrofit(url: String): Retrofit {
 
         val client = OkHttpClient.Builder()
             .addInterceptor(ChuckerInterceptor.Builder(context).build())
@@ -18,13 +18,15 @@ class RetrofitBuilder(
 
         return Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create())
-            .baseUrl(BASE_URL)
+            .baseUrl(url)
             .client(client)
             .build()
     }
-    val apiService: IApiService = getRetrofit().create(IApiService::class.java)
+    val apiService: IApiService = getRetrofit(BASE_URL).create(IApiService::class.java)
+    val movieService: IMovieApiService = getRetrofit(BASE_URL_MOVIES).create(IMovieApiService::class.java)
 
     companion object {
         private const val BASE_URL = "https://api.github.com"
+        private const val BASE_URL_MOVIES = "https://api.themoviedb.org"
     }
 }

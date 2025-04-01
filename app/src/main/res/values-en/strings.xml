@@ -8,4 +8,5 @@
     <string name="internet_conection_error">You have no internet connection</string>
     <string name="btn_take_photo">Tomar foto</string>
     <string name="movie_list">Movie List</string>
+    <string name="token">fa3e844ce31744388e07fa47c7c5d8c3</string>
 </resources>

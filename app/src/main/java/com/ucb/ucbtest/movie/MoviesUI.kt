@@ -117,6 +117,9 @@ fun MoviesUI(movieViewModel: MovieViewModel = hiltViewModel(), onSuccess : (Movi
             }
 
         }
+        is MovieViewModel.MovieUIState.Error -> {
+            Text(ui.message)
+        }
     }
 
 }
