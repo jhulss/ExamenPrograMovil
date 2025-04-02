@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.ucb.data.LoginRepository
 import com.ucb.framework.datastore.LoginDataSource
 import com.ucb.usecases.DoLogin
+import com.ucb.usecases.ObtainToken
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    val loginUseCase: DoLogin
+    val loginUseCase: DoLogin,
+    val obtainToken: ObtainToken
 ): ViewModel() {
 
     sealed class LoginState {
@@ -33,8 +35,9 @@ class LoginViewModel @Inject constructor(
             val result: Result<Unit> = loginUseCase.invoke(userName = userName, password = password)
 
             when {
-                result.isSuccess  -> {
+                result.isSuccess -> {
                     _loginState.value = LoginState.Successful()
+                    obtainToken.getToken()
                 }
                 result.isFailure -> {
                     _loginState.value = LoginState.Error(message = "Invalid credentials")
