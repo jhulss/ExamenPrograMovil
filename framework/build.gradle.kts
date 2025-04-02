@@ -54,6 +54,8 @@ dependencies {
     annotationProcessor(libs.room.compiler)
     testImplementation(libs.room.testing)
 
+    implementation(libs.datastore)
+
 
     debugImplementation(libs.chucker)
     releaseImplementation(libs.chucker.no.op)
