@@ -1,10 +1,13 @@
 package com.ucb.usecases
 
+import com.ucb.data.LoginRepository
 import kotlinx.coroutines.delay
 
-class DoLogin {
-    suspend fun invoke(userName: String, password: String) : Boolean {
+class DoLogin(
+    private val loginRepository: LoginRepository
+) {
+    suspend fun invoke(userName: String, password: String) : Result<Unit> {
         delay(1)
-        return (userName.equals("calyr") && password.equals("123456"))
+        return loginRepository.doLogin(userName, password)
     }
 }

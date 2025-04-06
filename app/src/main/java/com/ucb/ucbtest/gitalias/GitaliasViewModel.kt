@@ -1,7 +1,6 @@
 package com.ucb.ucbtest.gitalias
 
 import android.content.Context
-import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ucb.data.NetworkResult
@@ -9,6 +8,7 @@ import com.ucb.domain.Gitalias
 import com.ucb.ucbtest.R
 import com.ucb.ucbtest.service.InternetConnection
 import com.ucb.usecases.FindGitAlias
+import com.ucb.usecases.GetEmailKey
 import com.ucb.usecases.SaveGitalias
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -23,6 +23,7 @@ import javax.inject.Inject
 class GitaliasViewModel @Inject constructor(
     private val findGitAlias : FindGitAlias,
     private val saveGitAlias: SaveGitalias,
+    private val getEmailKey: GetEmailKey,
     @ApplicationContext private val context: Context
 ): ViewModel() {
 
@@ -34,6 +35,9 @@ class GitaliasViewModel @Inject constructor(
     private val _flow = MutableStateFlow<GitaliasState>(GitaliasState.Init)
     val flow : StateFlow<GitaliasState> = _flow
 
+    private val _loginflow = MutableStateFlow<String>("")
+    val loginflow : StateFlow<String> = _loginflow
+
     fun fetchGitalias(useID: String) {
         viewModelScope.launch {
             if ( InternetConnection.isConnected(context) ) {
@@ -42,6 +46,16 @@ class GitaliasViewModel @Inject constructor(
                     is NetworkResult.Success -> {
                         saveGitAlias.invoke(result.data)
                         _flow.value = GitaliasState.Successful(model = result.data )
+                        val resultEmail = getEmailKey.invoke()
+
+                        when {
+                            resultEmail.isSuccess -> {
+                                _loginflow.value = resultEmail.getOrDefault("")
+                            }
+                            resultEmail.isFailure -> {
+                                _loginflow.value = resultEmail.getOrDefault("")
+                            }
+                        }
                     }
                     is NetworkResult.Error -> {
                         _flow.value = GitaliasState.Error(result.error)

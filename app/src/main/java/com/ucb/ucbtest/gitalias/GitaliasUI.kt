@@ -31,6 +31,7 @@ fun GitaliasUI(viewModel: GitaliasViewModel = hiltViewModel()) {
     var alias by remember { mutableStateOf("") }
 
     val gitaliasState by viewModel.flow.collectAsState()
+    val loginState by viewModel.loginflow.collectAsState()
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -39,6 +40,9 @@ fun GitaliasUI(viewModel: GitaliasViewModel = hiltViewModel()) {
     ) {
         Column( horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Text(
+                "Welcome: " + loginState
+            )
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = alias,
