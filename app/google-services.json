@@ -1,1 +1,29 @@
-
+{
+  "project_info": {
+    "project_number": "467259613902",
+    "project_id": "mobile-5510a",
+    "storage_bucket": "mobile-5510a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467259613902:android:eeff143869f166fee4a69f",
+        "android_client_info": {
+          "package_name": "com.ucb.ucbtest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDapl-Y0PyDV-DFhaCayinb9-NmSmfNPlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
