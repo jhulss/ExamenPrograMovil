@@ -131,4 +131,33 @@ object AppModule {
     fun provideIPushDataSource(): IPushDataSource {
         return FirebaseNotificationDataSource()
     }
+
+    @Provides
+    fun provideBookDao(database: AppDatabase): BookDao = database.bookDao()
+
+    @Provides
+    @Singleton
+    fun provideBookRepository(
+        remoteDataSource: BookRemoteDataSource,
+        bookDao: BookDao
+    ): BookRepository {
+        return BookRepository(remoteDataSource, bookDao)
+    }
+
+    // Provee los casos de uso
+    @Provides
+    fun provideSearchBooks(repository: BookRepository): SearchBooks {
+        return SearchBooks(repository)
+    }
+
+    @Provides
+    fun provideToggleFavorite(repository: BookRepository): ToggleFavoriteBook {
+        return ToggleFavoriteBook(repository)
+    }
+
+    @Provides
+    fun provideGetFavorites(repository: BookRepository): GetFavoriteBooks {
+        return GetFavoriteBooks(repository)
+    }
+
 }
